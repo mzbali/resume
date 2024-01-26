@@ -1,0 +1,24 @@
+# Ignore LaTeX generated files
+
+# Auxiliary file created by LaTeX
+resume.aux
+
+# Log file created by LaTeX
+resume.log
+
+# Output file created by LaTeX
+resume.out
+
+# PDF file created by LaTeX
+resume.pdf
+
+# SyncTeX file, a synchronization file for LaTeX
+resume.synctex.gz
+
+# Ignore latexmk generated files
+
+# File Database used by the latexmk program to store state information
+resume.fdb_latexmk
+
+# Log file of the latexmk program
+resume.fls

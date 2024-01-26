@@ -1,0 +1,232 @@
+%-------------------------
+% Resume in Latex
+% Author : Mahmud Zaman Bali
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\centering\arraybackslash}X >{\raggedleft\arraybackslash}X}
+    \href{mailto:mahmudzbali@gmail.com}{mahmudzbali@gmail.com} & \textbf{\href{https://mzbali.com/}{\Large Mahmud Zaman Bali}} & GitHub: \href{https://github.com/mzbali}{github.com/mzbali} \\
+    Mobile : +44 7405 736719 & Luton, United Kingdom & LinkedIn: \href{https://www.linkedin.com/in/mzbali/}{in/mzbali} \\
+    & \href{https://mzbali.com/}{mzbali.com} & \\
+\end{tabularx}
+
+
+
+%\begin{center}
+ %   \textbf{\Huge \scshape Mahmud Zaman Bali} \\ \vspace{1pt}
+ %   \small +44 7405736719 $|$ \href{mailto:mahmudzbali@gmail.com}%
+ %{\underline{mahmudzbali@gmail.com}} $|$ 
+   % \href{https://linkedin.com/in/mzbali}{\underline{linkedin.com/in/mzbali}} $|$
+   % \href{https://github.com/mzbali}{\underline{github.com/mzbali}}
+% \end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Queen Mary University of London}{London, United Kingdom}
+      {MSc, Artificial Intelligence}{Sept. 2022 -- Oct. 2023}
+      \resumeItemListStart
+        \resumeItem{\textbf{1st} class \textbf{Distinction}.}
+        \resumeItem{\textbf{Modules:} Natural Language Processing, Machine Learning, Applied Statistics, Deep Learning.}
+      \resumeItemListEnd
+    \resumeSubheading
+      {American International University-Bangladesh}{Dhaka, Bangladesh}
+      {BSc, Computer Science and Engineering}{Oct. 2021}
+    \resumeItemListStart
+        \resumeItem{\textbf{GPA:} 3.93/4.00}
+        \resumeItem{\textbf{Modules:} Software Engineering, Web Technologies, Object Oriented Programming, OOP Analysis \& Design.}
+        \resumeItem{\textbf{Achievements:} Dean’s List Award.}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+  \resumeProjectHeading
+    {\href{https://bugblitz.mzbali.com/}{\textbf{BugBlitz}} $|$ \emph{.NET 8 Core, Next.js, PostgreSQL, Docker, Azure}}{}
+  \resumeItemListStart
+    \resumeItem{Developed using .NET 8 and Next.js by adhering to SOLID guidelines }
+\resumeItem{Features: Authentication, CRUD operations for projects,bugs and notes, sorting and filtering, Intuitive UI.}
+\resumeItem{Decreased code complexity by 20\% by delegating authentication to microservice (Zitadel)}
+    \resumeItem{Deployed on Azure VM using Docker Swarm (CapRover) with HTTPS for API \& Client.}
+    \resumeItem{GitHub: \href{https://github.com/mzbali/bugblitz}{https://github.com/mzbali/bugblitz}}
+    \resumeItem{Website: \href{https://bugblitz.mzbali.com}{https://bugblitz.mzbali.com}}
+  \resumeItemListEnd
+  
+    \resumeProjectHeading
+      {\href{https://storetail.mzbali.com/catalog}{\textbf{Storetail}} $|$ \emph{.NET Core, React, EF Core, Redux, Postgres, JWT, Stripe Integration}}{}
+      \resumeItemListStart
+        \resumeItem{Developed a functional React e-commerce website with a .Net Core and React.}
+        \resumeItem{Implemented CI/CD pipeline using GitHub Actions.}
+        \resumeItem{Deployed dockerized app on Azure VM with SSL certificate.}
+        \resumeItem{GitHub: \href{https://github.com/mzbali/storetail}{https://github.com/mzbali/storetail}}
+        \resumeItem{Website: \href{https://storetail.mzbali.com}{https://storetail.mzbali.com}}
+      \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Teaching Assistant}{Oct 2020 -- Jan 2021}
+      {American International University-Bangladesh}{Dhaka, Bangladesh}
+      \resumeItemListStart
+        \resumeItem{Assisted teachers in lesson planning by preparing materials.}
+        \resumeItem{Collaborated with lead teachers to recognise issues students are facing and recommend solutions.}
+        \resumeItem{Revised lesson material with students individually or in small groups.}
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+
+  \resumeSubHeadingListEnd
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C\#, TypeScript, Python, JavaScript} \\
+     \textbf{Frameworks}{: .NET Core, React, Next.js.} \\
+     \textbf{Databases}{: PostgreSQL, Redis} \\
+     \textbf{Developer Tools}{: Git, Bash, Docker, GitHub Actions} \\
+     \textbf{Environment}{: Rider, VS Code, MacOS, Linux}
+    }}
+ \end{itemize}
+ 
+%-----------LANGUAGE SKILLS-----------
+\section{Language Proficiency}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{English}{: Fluent (IELTS 7.5)} \\
+     \textbf{Bengali}{: Native}
+    }}
+ \end{itemize}
+
+%-----------MISCELLANEOUS SKILLS-----------
+ \section{Miscellaneous}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Work Permit}{: Authorised to work in the UK without requiring visa sponsorship now or in the future.}
+    }}
+ \end{itemize}
+
+%-------------------------------------------
+\end{document}
