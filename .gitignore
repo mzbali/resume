@@ -22,3 +22,5 @@ resume.fdb_latexmk
 
 # Log file of the latexmk program
 resume.fls
+resume.bbl
+resume.dvi
