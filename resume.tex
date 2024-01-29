@@ -20,6 +20,9 @@
 \usepackage{tabularx}
 \input{glyphtounicode}
 
+\usepackage{xcolor}
+\hypersetup{colorlinks,urlcolor=blue}
+
 
 %----------FONT OPTIONS----------
 % sans-serif
@@ -151,11 +154,11 @@
 \section{Projects}
   \resumeSubHeadingListStart
   \resumeProjectHeading
-    {\href{https://bugblitz.mzbali.com/}{\textbf{BugBlitz}} $|$ \emph{.NET Core, Next.js, PostgreSQL, Docker, Azure}}{}
+    {{\textbf{BugBlitz}} $|$ \emph{.NET Core, Next.js, PostgreSQL, Docker, Azure}}{}
   \resumeItemListStart
     \resumeItem{Developed using .NET Core 8 and Next.js by adhering to SOLID guidelines.}
 \resumeItem{Devised secure authentication, built CRUD operations, improving project efficiency.}
-\resumeItem{Decreased code complexity by 20\% by delegating authentication to microservices (Zitadel).}
+\resumeItem{Decreased code complexity by 20\% by delegating authentication to an OAuth2 microservice.}
 \resumeItem{Applied caching in Next.js, substantially cutting back on database queries and boosting efficiency.}
     \resumeItem{Deployed on Azure VM using Docker Swarm (CapRover) with HTTPS for API \& Client.}
     \resumeItem{GitHub: \href{https://github.com/mzbali/bugblitz}{https://github.com/mzbali/bugblitz}}
@@ -163,7 +166,7 @@
   \resumeItemListEnd
   
     \resumeProjectHeading
-      {\href{https://storetail.mzbali.com/catalog}{\textbf{Storetail}} $|$ \emph{.NET Core, React, Redux, PostgreSQL, JWT, Stripe}}{}
+      {{\textbf{Storetail}} $|$ \emph{.NET Core, React, Redux, PostgreSQL, JWT, Stripe}}{}
       \resumeItemListStart
         \resumeItem{Created a robust e-commerce website using .Net Core 6 and React.}
         \resumeItem{Leveraged Extension Pattern with SOLID principles for enhanced code organisation and readability.}
