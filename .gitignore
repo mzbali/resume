@@ -24,3 +24,6 @@ resume.fdb_latexmk
 resume.fls
 resume.bbl
 resume.dvi
+
+# Mac OS X Finder files
+.DS_Store
