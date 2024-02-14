@@ -18,7 +18,10 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+% Get rid of warnings
+\setlength{\footskip}{4.08003pt}
+% ATS friendly
+% \input{glyphtounicode}
 
 \usepackage{xcolor}
 \hypersetup{colorlinks,urlcolor=blue}
@@ -28,13 +31,12 @@
 % sans-serif
 % \usepackage[sfdefault]{FiraSans}
 % \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-
 % serif
 % \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
+\usepackage{fontspec}
+% Custom font
+\setmainfont{Arial}
+\newfontfamily{\futura}{Futura}
 
 
 \pagestyle{fancy}
@@ -59,10 +61,10 @@
 % Sections formatting
 \titleformat{\section}{
   \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+}{}{0em}{}[\color{gray}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+% \pdfgentounicode=1
 
 %-------------------------
 % Custom commands
@@ -106,14 +108,12 @@
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \begin{document}
 
 %----------HEADING----------
 
 \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\centering\arraybackslash}X >{\raggedleft\arraybackslash}X}
-    \href{mailto:mahmudzbali@gmail.com}{mahmudzbali@gmail.com} & \textbf{{\Large Mahmud Zaman Bali}} & GitHub: \href{https://github.com/mzbali}{github.com/mzbali} \\
+    \href{mailto:mahmudzbali@gmail.com}{mahmudzbali@gmail.com} & \textbf{{\futura\Large Mahmud Zaman Bali}} & GitHub: \href{https://github.com/mzbali}{github.com/mzbali} \\
     Mobile: +44 7405 736719 & London, United Kingdom & LinkedIn: \href{https://www.linkedin.com/in/mzbali/}{ linkedin.com/mzbali} \\
     & \href{https://mzbali.com/}{mzbali.com} & \\
 \end{tabularx}
@@ -127,6 +127,18 @@
    % \href{https://github.com/mzbali}{\underline{github.com/mzbali}}
 % \end{center}
 
+%-----------SUMMARY-----------
+% \section{Summary}
+% Skilled .NET Core and React developer with MSc in Artificial Intelligence.  Proven track record in building complete web applications and applying CI/CD practices. Seeking full-stack development roles where I can contribute to innovative, user-focused projects. 
+
+%-----------MISCELLANEOUS SKILLS-----------
+\section{Work Permit}
+
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+  \textbf{ No Sponsorship Required} now or in the future.} 
+  }
+\end{itemize}
 
 %-----------EDUCATION-----------
 \section{Education}
@@ -136,7 +148,6 @@
       {MSc, Artificial Intelligence}{2022 -- 2023}
       \resumeItemListStart
         \resumeItem{\textbf{1st} class \textbf{Distinction}.}
-        \resumeItem{\textbf{Modules:} Natural Language Processing, Machine Learning, Applied Statistics, Deep Learning.}
       \resumeItemListEnd
     \resumeSubheading
       {American International University-Bangladesh}{Dhaka, Bangladesh}
@@ -147,7 +158,6 @@
         \resumeItem{\textbf{Achievements:} Dean’s List Award.}
     \resumeItemListEnd
   \resumeSubHeadingListEnd
-
 
 %-----------PROJECTS-----------
 \section{Projects}
@@ -176,20 +186,27 @@
       \resumeItemListEnd
 
     \resumeSubHeadingListEnd
-
 %-----------EXPERIENCE-----------
 \section{Experience}
-  \resumeSubHeadingListStart
 
-    \resumeSubheading
-      {Teaching Assistant}{2020 -- 2021}
-      {American International University-Bangladesh}{Dhaka, Bangladesh}
-      \resumeItemListStart
-        \resumeItem{Co-ordinated in tandem with teachers to prepare materials for lesson planning.}
-        \resumeItem{Collaborated with lead teachers to recognise issues students are facing and recommend solutions.}
-        \resumeItem{Engaged with students individually or in small groups for the revision of lesson material.}
-        \resumeItem{Constructed engaging quiz questions related to Computer Science, enhancing student assessment and reinforcing learning objectives.}
-      \resumeItemListEnd
+\resumeSubHeadingListStart
+
+\resumeSubheading
+{Teaching Assistant (Computer Science)}
+{Dhaka, Bangladesh}
+{American International University-Bangladesh}
+{2020 -- 2021}
+
+\resumeItemListStart
+
+\resumeItem{Developed lesson materials for CS courses, emphasizing programming concepts and problem-solving.} 
+\resumeItem{Provided focused tutoring to students, aiding in programming challenges and code debugging.}
+\resumeItem{Designed quizzes and assessments to gauge student comprehension of core CS concepts.} 
+\resumeItem{Collaborated with instructors to address student programming difficulties, promoting academic success.} 
+
+\resumeItemListEnd
+
+
       
 % -----------Multiple Positions Heading-----------
 %    \resumeSubSubheading
@@ -208,11 +225,10 @@
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: C\#, TypeScript, Python, JavaScript} \\
-     \textbf{Frameworks}{: .NET Core, React, Next.js} \\
-     \textbf{Databases}{: PostgreSQL, Redis} \\
-     \textbf{Developer Tools}{: Git, Bash, Docker, GitHub Actions} \\
-     \textbf{Environment}{: Rider, VS Code, MacOS, Linux}
+     \textbf{Web Development:} .NET Core, React, Next.js, C\#, Typescript, JavaScript \\
+    \textbf{DevOps:} Git, Bash, Docker, GitHub Actions \\
+    \textbf{Databases:} PostgreSQL, Redis  \\
+    \textbf{Other:} Rust, VS Code, Rider, Linux, MacOS \\
     }}
  \end{itemize}
  
@@ -222,14 +238,6 @@
     \small{\item{
      \textbf{English}{: Fluent (IELTS 7.5)} \\
      \textbf{Bengali}{: Native}
-    }}
- \end{itemize}
-
-%-----------MISCELLANEOUS SKILLS-----------
- \section{Miscellaneous}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Work Permit}{: Authorised to work within the UK without requiring visa sponsorship now or in the future.}
     }}
  \end{itemize}
 
