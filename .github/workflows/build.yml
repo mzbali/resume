@@ -3,15 +3,10 @@ name: Upload résumé PDF
 permissions:
   contents: write
 
+# Publishes to GitHub Pages only from main. Other branches and pull requests
+# never deploy, so a branch can hold an unpublished resume.
 on:
   push:
-    branches:
-      - "main"
-    paths:
-      - "resume.pdf"
-      - "index.html"
-      - ".github/workflows/**"
-  pull_request:
     branches:
       - "main"
     paths:
