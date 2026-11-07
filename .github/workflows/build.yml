@@ -1,43 +1,78 @@
-name: Upload résumé PDF
-
-permissions:
-  contents: write
+name: Résumé
 
 on:
   push:
-    branches:
-      - "main"
-    paths:
-      - "resume.pdf"
-      - "index.html"
-      - ".github/workflows/**"
+    branches: [main]
+    paths: [resume.pdf, index.html, .github/workflows/**]
   pull_request:
-    branches:
-      - "main"
-    paths:
-      - "resume.pdf"
-      - "index.html"
-      - ".github/workflows/**"
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  build_latex:
+  # Publishes only from main, so an unmerged résumé never goes live.
+  deploy:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
-
-      - name: Post Processing
-        run: |
-          mkdir build 
-          cp resume.pdf build/ 
-          cp index.html build/
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - run: mkdir build && cp resume.pdf index.html build/
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: build
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  # Posts page 1 of the PR's résumé.pdf as an image, in one comment that updates on each push.
+  preview:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.pull_request.number }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check the PDF was rebuilt
+        run: |
+          changed=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+          if grep -qx resume.tex <<<"$changed" && ! grep -qx resume.pdf <<<"$changed"; then
+            echo "::error::resume.tex changed but resume.pdf did not. Rebuild the PDF and commit it."
+            exit 1
+          fi
+      - run: sudo apt-get install -y -qq poppler-utils >/dev/null
+      - run: pdftoppm -png -r 110 -f 1 -l 1 -singlefile resume.pdf page-1
+      - name: Post page 1
+        run: |
+          repo=$GITHUB_REPOSITORY branch=pr-assets marker='<!-- resume-preview -->'
+          if ! gh api "repos/$repo/branches/$branch" --silent 2>/dev/null; then
+            tree=$(gh api "repos/$repo/git/trees" -f 'tree[][path]=README.md' -f 'tree[][mode]=100644' \
+              -f 'tree[][type]=blob' -f 'tree[][content]=PR preview images.' --jq .sha)
+            commit=$(gh api "repos/$repo/git/commits" -f message="Start PR preview storage" -f tree="$tree" --jq .sha)
+            gh api "repos/$repo/git/refs" -f ref="refs/heads/$branch" -f sha="$commit" --silent
+          fi
+          path="pr-$PR/${HEAD_SHA:0:7}/page-1.png"
+          sha=$(gh api "repos/$repo/contents/$path?ref=$branch" --jq .sha 2>/dev/null || true)
+          base64 -w0 page-1.png | jq -Rs --arg m "Add $path" --arg b "$branch" --arg s "$sha" \
+            '{message: $m, branch: $b, content: .} + (if $s == "" then {} else {sha: $s} end)' |
+            gh api -X PUT "repos/$repo/contents/$path" --input - --silent
+          body="$marker"$'\n'"### Page 1 at ${HEAD_SHA:0:7}"$'\n\n'"![page 1](https://raw.githubusercontent.com/$repo/$branch/$path)"
+          existing=$(gh api --paginate "repos/$repo/issues/$PR/comments" \
+            --jq ".[] | select(.body | startswith(\"$marker\")) | .id" | head -1)
+          if [ -n "$existing" ]; then
+            gh api -X PATCH "repos/$repo/issues/comments/$existing" -f body="$body" --silent
+          else
+            gh api "repos/$repo/issues/$PR/comments" -f body="$body" --silent
+          fi
