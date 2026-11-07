@@ -47,7 +47,7 @@ jobs:
           fetch-depth: 0
       - name: Check the PDF was rebuilt
         run: |
-          changed=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA")
+          changed=$(git diff --name-only "$BASE_SHA...$HEAD_SHA")
           if grep -qx resume.tex <<<"$changed" && ! grep -qx resume.pdf <<<"$changed"; then
             echo "::error::resume.tex changed but resume.pdf did not. Rebuild the PDF and commit it."
             exit 1
